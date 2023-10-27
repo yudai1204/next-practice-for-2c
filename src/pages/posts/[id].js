@@ -32,7 +32,10 @@ export default function Post() {
           <h3>name: {data.name}</h3>
           <h4>id: {data.id}</h4>
           <a href={`mailto:${data.email}`}>{data.email}</a>
-          <p>{data.body}</p>
+          {/* 本文を改行コードで区切ってそれぞれ別の段落にしている。HTML内では\nは改行にならず、<br>タグを入れるか別の段落(p)にする必要がある */}
+          {data.body.split("\n").map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
           <a href="/">一覧へ</a>
         </div>
       )}
